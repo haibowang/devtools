@@ -1,0 +1,61 @@
+Techniques and tools that we can use to gather data and make it visible to the team.
+
+1. Tools to show the quality of the software and how that quality is changing over time.
+2. To decide what our next refactoring target should be. This may be a part of the code that is quantitatively worse
+   than others (according to some measure of goodness), or it may be code where refactoring provides a lot of value
+   to the team, perhaps because it is a class that is often touched by developers when they implement bug fixes or
+   new features.
+   
+Gathering useful data about your software
+
+   - What state is the code in to start with? Is it really in as bad shape as you think?
+   - What should be your next target for refactoring at any given time?
+   - How much progress are you making with your refactoring? Are you improving the quality fast enough to keep up with
+     the entropy introduced by new changes?
+     
+Metrics
+	Bugs and coding standard violations
+		- FindBugs: is useful for finding subtle bugs related to thread-safe, correctness, and so on, that are easy to miss
+                            in code review.
+		- PMD: has some overlap with FindBugs, but it works against source code instead of the compiled bytecode, so
+                            it can catch a different class of bugs.
+		- Checkstyle: has some overlap with PMD, but it is more useful for validating code style against a coding
+                            standard rather than finding bugs.
+
+	Performance
+		- Shell scripts to aggregate the processing time of every request in a log file to calculate percentile response
+		  times per hour, per day, and so on.
+		- Building an online app to allow team members to view performance trends.
+		- Fluentd: get log data into an Elasticsearch index.
+		- Kibana dashboard: build dashboards for visualizing log data.
+	Error counts
+	    - for a website, count the number of 50 Internal Server Error responses that your server generates per day.
+	    - Sentry: to view errors in real time.
+	    
+Refactoring to improve the codebase
+	- Refactoring is a restructuring of code at the level of methods and classes
+	- Re-architecting is refactoring at the level of modules and components
+	- Big Rewrite is re-architecting at the highest possible level.
+	
+   
+Pick your fights
+	- Low-hanging fruit (risk = low, difficult = low) - These are a good place to start.
+	- Pain points (value = high) - Fix enough of these, and your team will treat you like a hero!
+	
+Refactoring
+
+	Disciplined refactoring
+		- Separate refactoring from other work
+		- Lean on the IDE
+		- Lean on the VCS
+		- The Mikado Method
+	Stale code
+		- Commented-out code
+		- Dead code
+		- Expired Code
+	Toxic tests
+		- Tests that don't test anything
+		- Bittle tests
+		- Randomly failing tests
+	
+		
